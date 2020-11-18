@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/orb_green.png" type="Texture" id=1]
+[ext_resource path="res://Items/orb.gd" type="Script" id=2]
+[ext_resource path="res://Items/orb_state_machine.gd" type="Script" id=3]
+[ext_resource path="res://Assets/glow.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.8616
+
+[sub_resource type="Animation" id=2]
+resource_name = "Hover"
+length = 12.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Orb:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4, 10, 12 ),
+"transitions": PoolRealArray( 1, -2, -2, 1, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -3.8147e-06 ), Vector2( 0, -3.8147e-06 ), Vector2( 15, -25 ), Vector2( 15, -25 ), Vector2( 0, -3.8147e-06 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Orb:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6, 7, 8, 8.5, 11, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -60.0, -60.0, 60.0, 60.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hover2"
+length = 4.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Orb:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -17 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0.870588, 0.972549, 0.85098, 1, 0.423529, 1, 0.270588, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+scale_random = 0.57
+color_ramp = SubResource( 5 )
+
+[node name="Orb" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="OrbStateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Orb" type="Sprite" parent="."]
+position = Vector2( 0, -3.8147e-06 )
+scale = Vector2( 0.065932, 0.065932 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Orb"]
+position = Vector2( 0, 5.78581e-05 )
+scale = Vector2( 15.1671, 15.1671 )
+texture = ExtResource( 4 )
+texture_scale = 4.0
+color = Color( 0.678431, 1, 0.780392, 1 )
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color( 0.168627, 0.352941, 0.180392, 0.772549 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hover = SubResource( 2 )
+anims/Hover2 = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource( 6 )

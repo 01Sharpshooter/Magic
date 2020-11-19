@@ -3,7 +3,8 @@ extends "res://Utils/state_machine.gd"
 enum JUMP_TYPE {
 	JUMP,
 	JUMP_ON_WALL,
-	JUMP_FROM_WALL
+	JUMP_FROM_WALL,
+	JUMP_FROM_WALL_TOP
 }
 
 var jump_type = JUMP_TYPE.JUMP
@@ -65,11 +66,6 @@ func _get_transition(_delta):
 		states.climbing:
 			if parent.is_on_floor():
 				return states.idle
-			elif !parent.is_at_wall():
-				if parent.velocity.y < 0:
-					return states.jumping
-				elif parent.velocity.y > 0:
-					return states.falling
 	return null
 
 func _enter_state(new_state, old_state):
@@ -84,6 +80,8 @@ func _enter_state(new_state, old_state):
 				JUMP_TYPE.JUMP:
 					parent.animation_tree_playback.travel("Jump")
 				JUMP_TYPE.JUMP_FROM_WALL:
+					parent.animation_tree_playback.travel("Jump")
+				JUMP_TYPE.JUMP_FROM_WALL_TOP:
 					parent.animation_tree_playback.travel("Jump")
 				JUMP_TYPE.JUMP_ON_WALL:
 					parent.animation_tree_playback.travel("JumpOnWall")
@@ -130,7 +128,10 @@ func _handle_jump(horizontal_input, vertical_input):
 		jump_type = JUMP_TYPE.JUMP
 		if state == states.climbing:
 			if parent.climb_raycast.get_collision_normal().x != vertical_input:
-				jump_type = JUMP_TYPE.JUMP_ON_WALL
+				if parent.is_at_wall():
+					jump_type = JUMP_TYPE.JUMP_ON_WALL
+				else:
+					jump_type = JUMP_TYPE.JUMP_FROM_WALL_TOP
 			else:
 				jump_type = JUMP_TYPE.JUMP_FROM_WALL
 

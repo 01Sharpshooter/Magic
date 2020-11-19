@@ -48,7 +48,7 @@ func apply_movement(input_vector, delta):
 		animation_container.scale.x = input_vector
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
-func climb_wall(climb_vector, delta):
+func climb_wall(climb_vector, _delta):
 	velocity.y = climb_vector * CLIMBING_SPEED
 	velocity = move_and_slide(velocity, Vector2.UP)
 	

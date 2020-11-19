@@ -26,17 +26,13 @@ func _state_logic(delta):
 		parent.apply_gravity(delta)
 
 func _get_transition(_delta):
+	# Changing to jump state is dynamically handled
 	match state:
 		states.idle:
-			if parent.velocity.y < 0:
-				return states.jumping
-			elif parent.velocity.x != 0:
+			if parent.velocity.x != 0:
 				return states.running
 		states.running:
-			if !parent.is_on_floor():
-				if parent.velocity.y < 0:
-					return states.jumping
-				elif parent.velocity.y > 0:
+			if !parent.is_on_floor() and parent.velocity.y > 0:
 					return states.falling
 			elif parent.is_on_floor() and parent.velocity.x == 0:
 				return states.idle
@@ -58,17 +54,14 @@ func _get_transition(_delta):
 					return states.running
 				else:
 					return states.idle
-			else:
-				if parent.is_at_wall() and parent.wall_climb_cooldown.is_stopped():
-					return states.climbing
-				elif parent.velocity.y < 0:
-					return states.jumping
+			elif parent.is_at_wall() and parent.wall_climb_cooldown.is_stopped():
+				return states.climbing
 		states.climbing:
 			if parent.is_on_floor():
 				return states.idle
 	return null
 
-func _enter_state(new_state, old_state):
+func _enter_state(new_state, _old_state):
 	parent.collision_shape.position.y = 0
 	match new_state:
 		states.idle:

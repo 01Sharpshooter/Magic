@@ -2775,23 +2775,22 @@ bones = [ NodePath("Hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Hi
 [node name="Skeleton2D" type="Skeleton2D" parent="AnimationContainer"]
 
 [node name="Hip" type="Bone2D" parent="AnimationContainer/Skeleton2D"]
-position = Vector2( -21.181, -5.19162 )
+position = Vector2( 0.816605, 0.817265 )
 rotation = -1.57008
 rest = Transform2D( 0.000716285, -1, 1, 0.000716285, 0.816605, 0.817265 )
 
 [node name="Chest" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip"]
 position = Vector2( 8.44216, 1.6312 )
-rotation = 0.153248
 rest = Transform2D( 1, 0, 0, 1, 8.44216, 1.6312 )
 
 [node name="Head" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/Chest"]
 position = Vector2( 56.096, -0.29003 )
-rotation = -0.516535
+rotation = 0.390858
 rest = Transform2D( 0.924583, 0.380982, -0.380982, 0.924583, 56.096, -0.29003 )
 
 [node name="ArmUpperR" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/Chest"]
 position = Vector2( 44.5394, -9.23679 )
-rotation = 2.21556
+rotation = 3.06583
 rest = Transform2D( -0.997131, 0.0757002, -0.0757002, -0.997131, 44.5394, -9.23679 )
 default_length = 23.0
 __meta__ = {
@@ -2801,7 +2800,7 @@ __meta__ = {
 
 [node name="ArmLowerR" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/Chest/ArmUpperR"]
 position = Vector2( 24.9504, 0.349211 )
-rotation = -1.66948
+rotation = -0.261799
 rest = Transform2D( 0.965926, -0.258819, 0.258819, 0.965926, 24.9504, 0.349211 )
 default_length = 28.0
 __meta__ = {
@@ -2819,7 +2818,6 @@ __meta__ = {
 
 [node name="ArmUpperL" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/Chest"]
 position = Vector2( 47.8675, -3.41379 )
-rotation = -1.96688
 rest = Transform2D( 1, 0, 0, 1, 47.8675, -3.41379 )
 __meta__ = {
 "_edit_bone_": true,
@@ -2828,7 +2826,7 @@ __meta__ = {
 
 [node name="ArmLowerL" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/Chest/ArmUpperL"]
 position = Vector2( -23.2712, 2.42205 )
-rotation = 2.03701
+rotation = 2.61799
 scale = Vector2( 0.999999, 0.999999 )
 rest = Transform2D( -0.866023, 0.500003, -0.500003, -0.866023, -23.2712, 2.42205 )
 default_length = 26.0
@@ -2837,7 +2835,6 @@ __meta__ = {
 }
 
 [node name="LegUpperR" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip"]
-rotation = -1.83019
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 __meta__ = {
 "_edit_bone_": true,
@@ -2846,7 +2843,6 @@ __meta__ = {
 
 [node name="LegLowerR" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/LegUpperR"]
 position = Vector2( -38.8953, 0.957199 )
-rotation = 2.00837
 rest = Transform2D( 1, 0, 0, 1, -38.8953, 0.957199 )
 __meta__ = {
 "_edit_bone_": true
@@ -2854,7 +2850,7 @@ __meta__ = {
 
 [node name="FootR" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/LegUpperR/LegLowerR"]
 position = Vector2( -48.5538, -3.2489 )
-rotation = 1.3941
+rotation = 1.78989
 rest = Transform2D( -0.299458, 0.954109, -0.954109, -0.299458, -48.5538, -3.2489 )
 __meta__ = {
 "_edit_bone_": true
@@ -2862,7 +2858,6 @@ __meta__ = {
 
 [node name="LegUpperL" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip"]
 position = Vector2( 2.44561, 1.06904 )
-rotation = -0.850387
 rest = Transform2D( 1, 0, 0, 1, 2.44561, 1.06904 )
 __meta__ = {
 "_edit_bone_": true,
@@ -2871,7 +2866,6 @@ __meta__ = {
 
 [node name="LegLowerL" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/LegUpperL"]
 position = Vector2( -38.8953, 0.957199 )
-rotation = 1.0379
 rest = Transform2D( 1, 0, 0, 1, -38.8953, 0.957199 )
 __meta__ = {
 "_edit_bone_": true
@@ -2879,7 +2873,7 @@ __meta__ = {
 
 [node name="FootL" type="Bone2D" parent="AnimationContainer/Skeleton2D/Hip/LegUpperL/LegLowerL"]
 position = Vector2( -48.5538, -3.2489 )
-rotation = 1.28423
+rotation = 1.68469
 rest = Transform2D( -0.308748, 0.951144, -0.951144, -0.308748, -48.5538, -3.2489 )
 __meta__ = {
 "_edit_bone_": true

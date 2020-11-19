@@ -75,6 +75,7 @@ scale_random = 0.57
 color_ramp = SubResource( 5 )
 
 [node name="Orb" type="KinematicBody2D"]
+scale = Vector2( 0.8, 0.8 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )

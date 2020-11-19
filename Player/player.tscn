@@ -2891,7 +2891,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -0.0388065, 96 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true

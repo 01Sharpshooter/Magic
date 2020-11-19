@@ -29,12 +29,6 @@ environment = SubResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 107.944, 272 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-
 [node name="Walls" type="YSort" parent="."]
 
 [node name="Node2D" parent="Walls" instance=ExtResource( 2 )]
